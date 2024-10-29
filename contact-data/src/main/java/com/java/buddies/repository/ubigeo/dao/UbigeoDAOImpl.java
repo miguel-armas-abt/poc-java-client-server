@@ -3,9 +3,7 @@ package com.java.buddies.repository.ubigeo.dao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.java.buddies.commons.PropertiesReader;
 import com.java.buddies.repository.ubigeo.wrapper.UbigeoResponseWrapper;
-
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.*;
 import java.net.Socket;
 
 public class UbigeoDAOImpl implements UbigeoDAO {
@@ -19,20 +17,20 @@ public class UbigeoDAOImpl implements UbigeoDAO {
 
   public UbigeoResponseWrapper findUbigeo(String ubigeoCode) {
     Socket socket = null;
-    DataOutputStream outputStream = null;
-    DataInputStream inputStream = null;
+    PrintWriter outputWriter = null;
+    BufferedReader inputReader = null;
 
     try {
       String host = propertiesReader.getProperty("services.ubigeo.host");
       int port = Integer.parseInt(propertiesReader.getProperty("services.ubigeo.port"));
       socket = new Socket(host, port);
 
-      outputStream = new DataOutputStream(socket.getOutputStream());
-      inputStream = new DataInputStream(socket.getInputStream());
+      outputWriter = new PrintWriter(socket.getOutputStream(), true);
+      inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-      outputStream.writeUTF("ubigeo/" + ubigeoCode);
+      outputWriter.println("ubigeo/" + ubigeoCode);
 
-      String ubigeoJson = inputStream.readUTF();
+      String ubigeoJson = inputReader.readLine();
       return objectMapper.readValue(ubigeoJson, UbigeoResponseWrapper.class);
 
     } catch (Exception exception) {
@@ -40,8 +38,8 @@ public class UbigeoDAOImpl implements UbigeoDAO {
 
     } finally {
       try {
-        if (inputStream != null) inputStream.close();
-        if (outputStream != null) outputStream.close();
+        if (inputReader != null) inputReader.close();
+        if (outputWriter != null) outputWriter.close();
         if (socket != null) socket.close();
 
       } catch (Exception exception) {
