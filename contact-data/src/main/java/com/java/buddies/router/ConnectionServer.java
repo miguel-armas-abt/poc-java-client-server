@@ -21,7 +21,7 @@ public class ConnectionServer {
     Socket currentSocket;
     while (true) {
       currentSocket = serverSocket.accept();
-      new UbigeoRouterTCP(currentSocket).start();
+      new ContactDataRouterTCP(currentSocket).start();
       log.info("A new connection was detected");
     }
   }

@@ -5,7 +5,7 @@ import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class Application {
+public class UbigeoApplication {
 
   public static void main(String[] args) throws IOException {
     ConnectionServer server = new ConnectionServer();

@@ -16,7 +16,7 @@ public class UbigeoHandler {
     ubigeoService = new UbigeoServiceImpl();
   }
 
-  void findUbigeo(String ubigeoCode, PrintWriter output) throws IOException {
+  public void findUbigeo(String ubigeoCode, PrintWriter output) throws IOException {
     UbigeoResponseDTO ubigeo = ubigeoService.findUbigeo(ubigeoCode);
     String ubigeoJson = objectMapper.writeValueAsString(ubigeo);
 
