@@ -1,8 +1,13 @@
 # REDES CON TCP
+Este proyecto implementa una comunicación cliente-servidor mediante TCP y aplica los siguientes patrones de diseño:
+
+- DTO
+- DAO
+- Mapper
 
 ---
 
-## 1. Diccionario
+## 1. Dominio
 
 ### Ubigeo
 Código de seis dígitos que identifica a un distrito del Perú. Cada par de dígitos corresponde con el departamento, 
@@ -22,16 +27,16 @@ provincia y distrito respectivamente. Por ejemplo, el código de ubigeo `150114`
 
 ### contact-data
 
-| Operación            | Descripción                                             |
-|----------------------|---------------------------------------------------------|
-| `contact-data/{dni}` | Recupera los datos de contacto asociados a un cliente.  |
+| Operación                                               | Endpoint             |
+|---------------------------------------------------------|----------------------|
+| Recuperar los datos de contacto asociados a un cliente. | `contact-data/{dni}` |
 
 
 ### ubigeo-finder
 
-| Operación             | Descripción                    |
-|-----------------------|--------------------------------|
-| `ubigeo/{ubigeoCode}` | Recupera los datos del ubigeo. |
+| Operación                       | Descripción           |
+|---------------------------------|-----------------------|
+| Recuperar los datos del ubigeo. | `ubigeo/{ubigeoCode}` |
 
 ---
 
