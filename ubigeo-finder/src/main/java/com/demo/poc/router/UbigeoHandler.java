@@ -10,11 +10,12 @@ import java.io.PrintWriter;
 
 public class UbigeoHandler {
 
-  private final static ObjectMapper objectMapper = new ObjectMapper();
+  private final ObjectMapper objectMapper;
   private final UbigeoService ubigeoService;
 
   public UbigeoHandler() {
     ubigeoService = new UbigeoServiceImpl();
+    objectMapper = new ObjectMapper();
   }
 
   public void findUbigeo(String ubigeoCode, PrintWriter output) throws IOException {
