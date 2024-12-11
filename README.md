@@ -1,4 +1,4 @@
-# REDES CON TCP
+# CLIENTE-SERVIDOR CON TCP
 Este proyecto implementa una comunicación cliente-servidor mediante TCP y aplica los siguientes patrones de diseño:
 
 - DTO
