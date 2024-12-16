@@ -7,6 +7,7 @@ import com.demo.poc.dto.ProvinceDTO;
 import com.demo.poc.dto.UbigeoResponseDTO;
 import com.demo.poc.repository.DepartmentRepository;
 import com.demo.poc.repository.DistrictRepository;
+import com.google.inject.Inject;
 
 public class UbigeoServiceImpl implements UbigeoService {
 
@@ -14,10 +15,13 @@ public class UbigeoServiceImpl implements UbigeoService {
   private final ProvinceRepository provinceRepository;
   private final DistrictRepository districtRepository;
 
-  public UbigeoServiceImpl() {
-    this.departmentRepository = new DepartmentRepository();
-    this.provinceRepository = new ProvinceRepository();
-    this.districtRepository = new DistrictRepository();
+  @Inject
+  public UbigeoServiceImpl(DepartmentRepository departmentRepository,
+                           ProvinceRepository provinceRepository,
+                           DistrictRepository districtRepository) {
+    this.departmentRepository = departmentRepository;
+    this.provinceRepository = provinceRepository;
+    this.districtRepository = districtRepository;
   }
 
   @Override

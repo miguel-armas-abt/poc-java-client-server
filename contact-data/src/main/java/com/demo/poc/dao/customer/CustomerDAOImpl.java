@@ -1,13 +1,13 @@
-package com.demo.poc.repository.customer.dao;
+package com.demo.poc.dao.customer;
 
 import com.demo.poc.commons.CsvReader;
-import com.demo.poc.repository.customer.entity.CustomerEntity;
+import com.demo.poc.dao.customer.entity.CustomerEntity;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerDAOImpl implements CustomerDAO {
 
-  private final String FILE = "/database/customers.csv";
+  private static final String FILE = "/database/customers.csv";
   private static final char SEPARATOR = ',';
 
   @Override

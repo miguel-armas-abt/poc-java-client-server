@@ -14,7 +14,7 @@ public class JsonFileReader {
       InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
       return objectMapper.readValue(inputStream, type);
     } catch (IOException ioException) {
-      throw new IllegalArgumentException("Error reading JSON file", ioException);
+      throw new RuntimeException("Error reading JSON file", ioException);
     }
   }
 
@@ -23,7 +23,7 @@ public class JsonFileReader {
       InputStream inputStream = getClass().getClassLoader().getResourceAsStream(filePath);
       return objectMapper.readValue(inputStream, objectMapper.getTypeFactory().constructCollectionType(List.class, type));
     } catch (IOException ioException) {
-      throw new IllegalArgumentException("Error reading JSON file", ioException);
+      throw new RuntimeException("Error reading JSON file: " + ioException.getMessage(), ioException);
     }
   }
 

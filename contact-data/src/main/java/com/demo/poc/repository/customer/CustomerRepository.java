@@ -1,17 +1,17 @@
 package com.demo.poc.repository.customer;
 
-import com.demo.poc.repository.customer.dao.CustomerDAOImpl;
-import com.demo.poc.repository.customer.entity.CustomerEntity;
-import com.demo.poc.repository.customer.dao.CustomerDAO;
-
+import com.demo.poc.dao.customer.entity.CustomerEntity;
+import com.demo.poc.dao.customer.CustomerDAO;
+import com.google.inject.Inject;
 import java.util.List;
 
 public class CustomerRepository {
 
   private final CustomerDAO customerDAO;
 
-  public CustomerRepository() {
-    this.customerDAO = new CustomerDAOImpl();
+  @Inject
+  public CustomerRepository(CustomerDAO customerDAO) {
+    this.customerDAO = customerDAO;
   }
 
   public List<CustomerEntity> findAll() {

@@ -1,16 +1,20 @@
 package com.demo.poc.router;
 
+import com.google.inject.Inject;
 import java.io.*;
 import java.net.Socket;
 
 public class UbigeoRouterTCP extends Thread {
 
   private final UbigeoHandler ubigeoHandler;
+  private Socket socket;
 
-  private final Socket socket;
+  @Inject
+  public UbigeoRouterTCP(UbigeoHandler ubigeoHandler) {
+    this.ubigeoHandler = ubigeoHandler;
+  }
 
-  public UbigeoRouterTCP(Socket socket) {
-    this.ubigeoHandler = new UbigeoHandler();
+  public void setSocket(Socket socket) {
     this.socket = socket;
   }
 

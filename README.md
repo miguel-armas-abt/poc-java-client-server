@@ -1,19 +1,20 @@
 # REDES CON TCP
-Este proyecto implementa una comunicación cliente-servidor mediante TCP y aplica los siguientes patrones de diseño:
-
-- DTO
-- DAO
-- Mapper
+Este proyecto implementa una comunicación cliente-servidor mediante TCP.
 
 ---
 
-## 1. Dominio
-
-### Ubigeo
-Código de seis dígitos que identifica a un distrito del Perú. Cada par de dígitos corresponde con el departamento, 
-provincia y distrito respectivamente. Por ejemplo, el código de ubigeo `150114` representa `15`: Lima, `01`: Lima y `14`: La Molina.
+> #### Ubigeo
+> - Código de seis dígitos que identifica a un distrito del Perú. 
+> - Cada par de dígitos corresponde con el departamento, provincia y distrito respectivamente.
+> - Por ejemplo, el código de ubigeo `150114` representa `15`: Lima, `01`: Lima y `14`: La Molina.
 
 ---
+
+## 1. Tecnologías
+- Lombok
+- Commons CSV
+- Jackson
+- Guice
 
 ## 2. Pre requisitos
 
@@ -23,7 +24,7 @@ provincia y distrito respectivamente. Por ejemplo, el código de ubigeo `150114`
 
 ---
 
-## 3. Componentes y operaciones
+## 3. Endpoints
 
 ### contact-data
 
@@ -60,3 +61,4 @@ provincia y distrito respectivamente. Por ejemplo, el código de ubigeo `150114`
 ```sh
   echo contact-data/76517368 | ncat localhost 8081
 ```
+
