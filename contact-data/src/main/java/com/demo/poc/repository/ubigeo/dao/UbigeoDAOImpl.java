@@ -21,9 +21,9 @@ public class UbigeoDAOImpl implements UbigeoDAO {
     BufferedReader inputReader = null;
 
     try {
-      String host = propertiesReader.getProperty("services.ubigeo.host");
+      String ip = propertiesReader.getProperty("services.ubigeo.host");
       int port = Integer.parseInt(propertiesReader.getProperty("services.ubigeo.port"));
-      socket = new Socket(host, port);
+      socket = new Socket(ip, port);
 
       outputWriter = new PrintWriter(socket.getOutputStream(), true);
       inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

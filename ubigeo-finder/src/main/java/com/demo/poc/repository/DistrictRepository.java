@@ -3,7 +3,7 @@ package com.demo.poc.repository;
 import com.demo.poc.commons.JsonFileReader;
 import com.demo.poc.commons.PropertiesReader;
 import com.demo.poc.dto.DistrictDTO;
-
+import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Comparator;
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class DistrictRepository {
 
   public List<DistrictDTO> findAll() {
     String filePath = propertiesReader.getProperty("ubigeo.districts.path");
-    List<DistrictDTO> districts = jsonFileReader.readListFromFile(DistrictDTO.class, filePath);
+    List<DistrictDTO> districts = jsonFileReader.readListFromFile(filePath, new TypeReference<>() {});
     districts.sort(Comparator.comparing(DistrictDTO::getId));
     return districts;
   }
