@@ -1,18 +1,21 @@
-package com.demo.poc.repository.ubigeo.dao;
+package com.demo.poc.dao.ubigeo;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demo.poc.commons.PropertiesReader;
-import com.demo.poc.repository.ubigeo.wrapper.UbigeoResponseWrapper;
+import com.demo.poc.dao.ubigeo.wrapper.UbigeoResponseWrapper;
+import com.google.inject.Inject;
 import java.io.*;
 import java.net.Socket;
 
 public class UbigeoDAOImpl implements UbigeoDAO {
 
-  private static final ObjectMapper objectMapper = new ObjectMapper();
+  private final ObjectMapper objectMapper;
   private final PropertiesReader propertiesReader;
 
-  public UbigeoDAOImpl() {
-    this.propertiesReader = new PropertiesReader();
+  @Inject
+  public UbigeoDAOImpl(PropertiesReader propertiesReader, ObjectMapper objectMapper) {
+    this.propertiesReader = propertiesReader;
+    this.objectMapper = objectMapper;
   }
 
   public UbigeoResponseWrapper findUbigeo(String ubigeoCode) {

@@ -1,15 +1,20 @@
 package com.demo.poc.router;
 
+import com.google.inject.Inject;
 import java.io.*;
 import java.net.Socket;
 
 public class ContactDataRouterTCP extends Thread {
 
   private final ContactDataHandler contactDataHandler;
-  private final Socket socket;
+  private Socket socket;
 
-  public ContactDataRouterTCP(Socket socket) {
-    this.contactDataHandler = new ContactDataHandler();
+  @Inject
+  public ContactDataRouterTCP(ContactDataHandler contactDataHandler) {
+    this.contactDataHandler = contactDataHandler;
+  }
+
+  public void setSocket(Socket socket) {
     this.socket = socket;
   }
 

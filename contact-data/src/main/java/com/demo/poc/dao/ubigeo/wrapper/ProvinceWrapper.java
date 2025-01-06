@@ -1,7 +1,5 @@
-package com.demo.poc.repository.ubigeo.wrapper;
+package com.demo.poc.dao.ubigeo.wrapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -15,8 +13,6 @@ import lombok.Getter;
 @Builder
 @Setter
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ProvinceWrapper implements Serializable {
 
   private String id;

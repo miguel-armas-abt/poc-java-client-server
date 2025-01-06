@@ -1,8 +1,8 @@
-package com.demo.poc.repository.customer.dao;
+package com.demo.poc.dao.customer;
 
 import java.util.List;
 
-import com.demo.poc.repository.customer.entity.CustomerEntity;
+import com.demo.poc.dao.customer.entity.CustomerEntity;
 
 public interface CustomerDAO {
 

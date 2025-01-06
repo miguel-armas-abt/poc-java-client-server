@@ -18,7 +18,7 @@ public class PropertiesReader {
       property = properties.getProperty(propertyKey);
 
     } catch (IOException exception) {
-      throw new RuntimeException("Error reading properties", exception);
+      throw new RuntimeException("Error reading properties: " + exception.getMessage(), exception);
     }
     return property;
   }

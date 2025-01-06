@@ -1,7 +1,5 @@
-package com.demo.poc.repository.ubigeo.wrapper;
+package com.demo.poc.dao.ubigeo.wrapper;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -15,8 +13,6 @@ import java.util.List;
 @Builder
 @Setter
 @Getter
-@JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class DepartmentWrapper implements Serializable {
 
   private String id;

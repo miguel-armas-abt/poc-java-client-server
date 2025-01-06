@@ -3,6 +3,7 @@ package com.demo.poc.repository;
 import com.demo.poc.commons.JsonFileReader;
 import com.demo.poc.commons.PropertiesReader;
 import com.demo.poc.dto.ProvinceDTO;
+import com.google.inject.Inject;
 import com.fasterxml.jackson.core.type.TypeReference;
 import java.util.Comparator;
 import java.util.List;
@@ -12,9 +13,10 @@ public class ProvinceRepository {
   private final PropertiesReader propertiesReader;
   private final JsonFileReader jsonFileReader;
 
-  public ProvinceRepository() {
-    propertiesReader = new PropertiesReader();
-    jsonFileReader = new JsonFileReader();
+  @Inject
+  public ProvinceRepository(PropertiesReader propertiesReader, JsonFileReader jsonFileReader) {
+    this.propertiesReader = propertiesReader;
+    this.jsonFileReader = jsonFileReader;
   }
 
   public ProvinceDTO findByProvinceIdAndDepartmentId(String provinceId, String departmentId) {

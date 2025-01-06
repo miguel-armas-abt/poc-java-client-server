@@ -2,10 +2,11 @@ package com.demo.poc.service;
 
 import com.demo.poc.repository.ubigeo.UbigeoRepository;
 import com.demo.poc.dto.ContactDataDTO;
-import com.demo.poc.repository.customer.entity.CustomerEntity;
+import com.demo.poc.dao.customer.entity.CustomerEntity;
 import com.demo.poc.mapper.ContactDataMapper;
 import com.demo.poc.repository.customer.CustomerRepository;
-import com.demo.poc.repository.ubigeo.wrapper.UbigeoResponseWrapper;
+import com.demo.poc.dao.ubigeo.wrapper.UbigeoResponseWrapper;
+import com.google.inject.Inject;
 
 public class ContactDataServiceImpl implements ContactDataService {
 
@@ -13,10 +14,13 @@ public class ContactDataServiceImpl implements ContactDataService {
   private final CustomerRepository customerRepository;
   private final UbigeoRepository ubigeoRepository;
 
-  public ContactDataServiceImpl() {
-    mapper = new ContactDataMapper();
-    customerRepository = new CustomerRepository();
-    ubigeoRepository = new UbigeoRepository();
+  @Inject
+  public ContactDataServiceImpl(ContactDataMapper mapper,
+                                CustomerRepository customerRepository,
+                                UbigeoRepository ubigeoRepository) {
+    this.mapper = mapper;
+    this.customerRepository = customerRepository;
+    this.ubigeoRepository = ubigeoRepository;
   }
 
   @Override
