@@ -31,16 +31,22 @@ public class UbigeoRouterTCP extends Thread {
         BufferedReader inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         PrintWriter outputWriter = new PrintWriter(socket.getOutputStream(), true)
     ) {
+      //receive request
       String endpoint = inputReader.readLine();
+      boolean success = false;
 
       if(endpoint.matches("^ubigeo/\\d{6}$")) {
         String ubigeoCode = endpoint.split("/")[1].trim();
         UbigeoResponseDTO ubigeo = ubigeoService.findUbigeo(ubigeoCode);
-        String ubigeoJson = objectMapper.writeValueAsString(ubigeo);
-        outputWriter.println(ubigeoJson);
+        String jsonResponse = objectMapper.writeValueAsString(ubigeo);
+
+        //write response
+        outputWriter.println(jsonResponse);
+        success = true;
       }
 
-      throw new IllegalArgumentException("The endpoint '" + endpoint + "' has not been implemented");
+      if(!success)
+        throw new IllegalArgumentException("The request '" + endpoint + "' was not processed successfully");
 
     } catch (IOException exception) {
       throw new RuntimeException("TCP error: " + exception.getMessage(), exception);
