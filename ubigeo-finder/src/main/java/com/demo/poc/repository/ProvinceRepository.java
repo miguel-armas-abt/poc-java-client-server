@@ -27,7 +27,7 @@ public class ProvinceRepository {
         return province;
     }
 
-    throw new IllegalArgumentException("No such province");
+    throw new IllegalArgumentException("No such province " + departmentId + provinceId);
   }
 
   public List<ProvinceDTO> findAll() {

@@ -27,7 +27,7 @@ public class DistrictRepository {
         return district;
     }
 
-    throw new IllegalArgumentException("No such district");
+    throw new IllegalArgumentException("No such district " + departmentId + provinceId + districtId);
   }
 
   public List<DistrictDTO> findAll() {

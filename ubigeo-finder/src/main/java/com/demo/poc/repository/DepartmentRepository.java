@@ -25,7 +25,7 @@ public class DepartmentRepository {
       if(department.getId().equals(departmentId))
         return department;
     }
-    throw new IllegalArgumentException("No such department");
+    throw new IllegalArgumentException("No such department " + departmentId);
   }
 
   public List<DepartmentDTO> findAll() {

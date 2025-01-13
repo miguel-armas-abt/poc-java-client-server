@@ -6,7 +6,6 @@ import com.demo.poc.repository.DepartmentRepository;
 import com.demo.poc.repository.DistrictRepository;
 import com.demo.poc.repository.ProvinceRepository;
 import com.demo.poc.router.ConnectionServer;
-import com.demo.poc.router.UbigeoHandler;
 import com.demo.poc.router.UbigeoRouterTCP;
 import com.demo.poc.service.UbigeoService;
 import com.demo.poc.service.UbigeoServiceImpl;
@@ -30,7 +29,6 @@ public class ComponentInjectorConfig extends AbstractModule {
         bind(DistrictRepository.class);
         bind(UbigeoService.class).to(UbigeoServiceImpl.class);
         bind(ObjectMapper.class);
-        bind(UbigeoHandler.class);
         bind(UbigeoRouterTCP.class);
         bind(ServerSocket.class).toProvider(ServerSocketProvider.class);
         bind(ConnectionServer.class);
