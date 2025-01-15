@@ -35,7 +35,7 @@ public class ContactDataRouterTCP extends Thread {
       boolean success = false;
 
       if(endpoint.matches("^get/contact-data/\\d{8}$")) {
-        String dni = endpoint.split("/")[1].trim();
+        String dni = endpoint.split("/")[2].trim();
         ContactDataDTO contactData = contactDataService.findByDni(dni);
         String jsonResponse = objectMapper.writeValueAsString(contactData);
 

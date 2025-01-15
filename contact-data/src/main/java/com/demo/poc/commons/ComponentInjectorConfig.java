@@ -9,7 +9,6 @@ import com.demo.poc.repository.ubigeo.UbigeoRepository;
 import com.demo.poc.dao.ubigeo.UbigeoDAO;
 import com.demo.poc.dao.ubigeo.UbigeoDAOImpl;
 import com.demo.poc.router.ConnectionServer;
-import com.demo.poc.router.ContactDataHandler;
 import com.demo.poc.router.ContactDataRouterTCP;
 import com.demo.poc.service.ContactDataService;
 import com.demo.poc.service.ContactDataServiceImpl;
@@ -33,7 +32,6 @@ public class ComponentInjectorConfig extends AbstractModule {
         bind(UbigeoRepository.class);
         bind(ContactDataService.class).to(ContactDataServiceImpl.class);
         bind(ObjectMapper.class);
-        bind(ContactDataHandler.class);
         bind(ContactDataRouterTCP.class);
         bind(ServerSocket.class).toProvider(ServerSocketProvider.class);
         bind(ConnectionServer.class);

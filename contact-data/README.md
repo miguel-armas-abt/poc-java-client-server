@@ -1,17 +1,12 @@
-# ubigeo-finder
+# contact-data
 
 ---
 
 > ## 📄 Endpoints
-> #### Consultar ubigeo: `get/ubigeo/{ubigeoCode}`
+> #### Consultar datos de contacto `get/contact-data/{dni}`
 > ```bash
-> echo get/ubigeo/150114 | ncat localhost 8083
+> echo get/contact-data/77517360 | ncat localhost 8081
 > ```
-
-> ## ¿Qué es ubigeo?
-> - Código de seis dígitos que identifica a un distrito del Perú.
-> - Cada par de dígitos corresponde con el departamento, provincia y distrito respectivamente.
-> - Por ejemplo, el código de ubigeo `150114` representa `15`: Lima, `01`: Lima y `14`: La Molina.
 
 > ## ⚙️ Tecnologías
 > - `Lombok`: Simplifica la escritura de código repetitivo.
