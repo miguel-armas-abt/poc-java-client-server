@@ -3,41 +3,11 @@ Este proyecto implementa una comunicación cliente-servidor mediante TCP.
 
 ---
 
-> #### Ubigeo
-> - Código de seis dígitos que identifica a un distrito del Perú. 
-> - Cada par de dígitos corresponde con el departamento, provincia y distrito respectivamente.
-> - Por ejemplo, el código de ubigeo `150114` representa `15`: Lima, `01`: Lima y `14`: La Molina.
-
----
-
-## 1. Tecnologías
-- Lombok
-- Commons CSV
-- Jackson
-- Guice
-
-## 2. Pre requisitos
-
-### Instalar ncat
-- Descargar e instalar ncat para Windows desde: https://nmap.org/download.html#windows
-- Añadir `ncat` a las variables de entorno.
-
----
-
-## 3. Endpoints
-
 ### contact-data
 
 | Operación                                               | Endpoint             |
 |---------------------------------------------------------|----------------------|
 | Recuperar los datos de contacto asociados a un cliente. | `contact-data/{dni}` |
-
-
-### ubigeo-finder
-
-| Operación                       | Descripción           |
-|---------------------------------|-----------------------|
-| Recuperar los datos del ubigeo. | `ubigeo/{ubigeoCode}` |
 
 ---
 

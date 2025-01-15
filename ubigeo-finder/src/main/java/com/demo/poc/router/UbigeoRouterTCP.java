@@ -35,8 +35,8 @@ public class UbigeoRouterTCP extends Thread {
       String endpoint = inputReader.readLine();
       boolean success = false;
 
-      if(endpoint.matches("^ubigeo/\\d{6}$")) {
-        String ubigeoCode = endpoint.split("/")[1].trim();
+      if(endpoint.matches("^get/ubigeo/\\d{6}$")) {
+        String ubigeoCode = endpoint.split("/")[2].trim();
         UbigeoResponseDTO ubigeo = ubigeoService.findUbigeo(ubigeoCode);
         String jsonResponse = objectMapper.writeValueAsString(ubigeo);
 

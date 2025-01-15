@@ -1,5 +1,7 @@
 package com.demo.poc.dao.ubigeo;
 
+import static com.demo.poc.commons.TCPResourceHelper.closeResources;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demo.poc.commons.PropertiesReader;
 import com.demo.poc.dao.ubigeo.wrapper.UbigeoResponseWrapper;
@@ -28,26 +30,22 @@ public class UbigeoDAOImpl implements UbigeoDAO {
       int port = Integer.parseInt(propertiesReader.getProperty("services.ubigeo.port"));
       socket = new Socket(ip, port);
 
+      //send request
       outputWriter = new PrintWriter(socket.getOutputStream(), true);
+      String ubigeoEndpoint = propertiesReader.getProperty("services.ubigeo.endpoint");
+      outputWriter.println(ubigeoEndpoint + ubigeoCode);
+
+      //receive response
       inputReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-      outputWriter.println("ubigeo/" + ubigeoCode);
-
       String ubigeoJson = inputReader.readLine();
+
       return objectMapper.readValue(ubigeoJson, UbigeoResponseWrapper.class);
 
-    } catch (Exception exception) {
-      throw new RuntimeException("Error processing ubigeo: " + exception.getMessage());
+    } catch (IOException exception) {
+      throw new RuntimeException("Error calling ubigeo service: " + exception.getMessage(), exception);
 
     } finally {
-      try {
-        if (inputReader != null) inputReader.close();
-        if (outputWriter != null) outputWriter.close();
-        if (socket != null) socket.close();
-
-      } catch (Exception exception) {
-        throw new RuntimeException("Error closing TCP connection: " + exception.getMessage());
-      }
+      closeResources(socket, inputReader, outputWriter);
     }
   }
 }
